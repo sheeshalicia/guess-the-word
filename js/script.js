@@ -33,7 +33,10 @@ guessButton.addEventListener("click", function (e) {
     const checkGuess = validateGuess(guess);
         //runs the function that validate's the player's guess
     console.log(checkGuess);
-});//step 3 of validate input section is throwing an error
+    // if (checkGuess) {
+    //     makeGuess(guess);
+    //}
+});
 
 
 //this function validates the player's guess
@@ -56,7 +59,6 @@ const validateGuess = function (input) {
 };
 
 //this function captures input and puts it in the "guessedLetters" array
-const makeGuess = function (letter) {
+const makeGuess = function (input) {
     guess = guess.toUpperCase();
-    
-}
+};
