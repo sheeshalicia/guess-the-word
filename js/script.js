@@ -30,12 +30,11 @@ guessButton.addEventListener("click", function (e) {
         //empties the message paragraph
     const guess = input.value;
         //pulls the value of the player's inputted guess
-    const checkGuess = validateGuess(guess);
+    const isLetter = validateGuess(guess);
         //runs the function that validate's the player's guess
-    console.log(checkGuess);
-    // if (checkGuess) {
-    //     makeGuess(guess);
-    //}
+    if (isLetter) {
+        makeGuess(guess);
+    }
 });
 
 
@@ -59,6 +58,12 @@ const validateGuess = function (input) {
 };
 
 //this function captures input and puts it in the "guessedLetters" array
-const makeGuess = function (input) {
+const makeGuess = function (guess) {
     guess = guess.toUpperCase();
+    if (guessedLetters.includes(guess)){
+        messages.innerText = "You've already guessed that letter!";
+    } else {
+        guessedLetters.push(guess);
+        console.log(guessedLetters);
+    }
 };
