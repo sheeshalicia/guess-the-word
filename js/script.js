@@ -1,4 +1,4 @@
-const letterGuess = document.querySelector(".guessed-letters");
+const guessedLettersElement = document.querySelector(".guessed-letters");
 const guessButton =   document.querySelector(".guess");
 const input = document.querySelector(".letter");
 const wordInProgress = document.querySelector(".word-in-progress");
@@ -65,5 +65,42 @@ const makeGuess = function (guess) {
     } else {
         guessedLetters.push(guess);
         console.log(guessedLetters);
+        lettersGuessed();
+        updateWord(guessedLetters);
     }
 };
+
+//this function updates the page with the letters they guess
+//call this function inside the else statement of the makeGuess function
+const lettersGuessed = function (){
+    //first clear the unordered list
+    guessedLettersElement.innerHTML = "";
+    //for each letter in the array, create a new list item 
+    for (const letter of guessedLetters){
+        const li = document.createElement("li");
+        li.innerText = letter;
+        //then add it to the unordered list
+        guessedLettersElement.append(li);
+    }
+};
+
+//I can't get this function to work >:(
+//this function updates the word in progress if it contains a guessed letter
+const updateWord = function (guessedLetters){
+    //convert the word to uppercase
+    const wordUpper = word.toUpperCase();
+    //splits the word string into an array so that the letter can appear
+    const wordArray = wordUpper.split("");
+    //you need to create a new array w/updated characters
+    const revealWord = [];
+    //and then check each letter in the array
+    for (const letter of wordArray){
+        if (guessedLetters.includes(letter)){
+            revealWord.push(letter.toUpperCase());
+    } else {
+        revealWord.push("●");
+    }
+}
+};
+
+
