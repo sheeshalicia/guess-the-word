@@ -91,6 +91,7 @@ const updateWord = function (guessedLetters){
     const wordUpper = word.toUpperCase();
     //splits the word string into an array so that the letter can appear
     const wordArray = wordUpper.split("");
+    console.log(wordArray); //this didn't work??
     //you need to create a new array w/updated characters
     const revealWord = [];
     //and then check each letter in the array
