@@ -1,11 +1,12 @@
 const guessedLettersElement = document.querySelector(".guessed-letters");
 const guessButton =   document.querySelector(".guess");
-const input = document.querySelector(".letter");
+const letterInput = document.querySelector(".letter");
 const wordInProgress = document.querySelector(".word-in-progress");
 const guessesRemainingElement = document.querySelector(".remaining");
 const guessesRemainingSpan = document.querySelector(".remaining span");
 const messages = document.querySelector(".message");
 const playAgainButton = document.querySelector(".play-again");
+
 const word = "magnolia";
 const guessedLetters = [];
 
@@ -28,7 +29,7 @@ guessButton.addEventListener("click", function (e) {
         //prevents the default form submit (reloading the page)
     messages.innerText = "";
         //empties the message paragraph
-    const guess = input.value;
+    const guess = letterInput.value;
         //pulls the value of the player's inputted guess
     const isLetter = validateGuess(guess);
         //runs the function that validate's the player's guess
@@ -53,7 +54,7 @@ const validateGuess = function (input) {
         messages.innerText = "Please enter a letter from A to Z.";
     } else{
         //if you typed a real single letter
-        return input;
+        return letterInput;
     }
 };
 
@@ -91,7 +92,7 @@ const updateWord = function (guessedLetters){
     const wordUpper = word.toUpperCase();
     //splits the word string into an array so that the letter can appear
     const wordArray = wordUpper.split("");
-    console.log(wordArray); //this didn't work??
+    //console.log(wordArray); //this didn't print anything different??
     //you need to create a new array w/updated characters
     const revealWord = [];
     //and then check each letter in the array
@@ -101,7 +102,18 @@ const updateWord = function (guessedLetters){
     } else {
         revealWord.push("●");
     }
-}
+    }
+console.log(revealWord);
+wordInProgress.innerText = revealWord.join("");
+didYouWin();
+};
+
+const didYouWin = function () {
+    //check to see if the word in progress matches the word they should guess
+    if (word.toUpperCase() === wordInProgress.innerText) {
+        messages.classList.add("win");
+        messages.innerHTML = `<p class ="highlight"> You guessed the correct world! Congrats!</p>`;
+    }
 };
 
 
