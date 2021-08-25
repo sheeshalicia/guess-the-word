@@ -33,7 +33,7 @@ const getWord = async function () {
 const placeholders = function (word) {
     const placeholderLetters = [];
     for (const letter of word) {
-        placeholderLetters.push("●");
+        placeholderLetters.push("❓");
     }
     wordInProgress.innerText = placeholderLetters.join("");
 };
